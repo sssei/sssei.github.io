@@ -1,11 +1,443 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+const name = "Seiga Ueno";
+const role = "Offensive Security Researcher / Engineer";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const skills = [
+  "Red Team",
+  "Offensive Security",
+  "AI/LLM Security", 
+  "Linux Kernel",
+  "Windows Kernel",
+  "Python",
+  "Go",
+  "C",
+  "Rust"
+];
+
+const experience = [
+  {
+    title: "Offensive Security Researcher / Engineer",
+    org: "Telecommunications Company",
+    period: "2025 - Present", 
+    body: "Working on offensive security, security research, and support for Red Team operations."
+     
+  },
+];
+
+const education = [
+  {
+    school: "The University of Tokyo",
+    degree: "M.S., Graduate School of Arts and Sciences, General Systems Studies",
+    period: "2023 - 2025",
+    body:
+      "Conducted research on Linux kernel fuzzing and container security in the Shinagawa Laboratory.", 
+  },
+  {
+    school: "The University of Tokyo",
+    degree: "B.S., Faculty of Science, Department of Information Science",
+    period: "2018 - 2023",
+    body:
+      "Wrote a thesis on the design and implementation of a secure REST API for TEE systems in the Kato Laboratory.",
+  },
+];
+
+const contact = [
+  {
+    label: "GitHub",
+    value: "github.com/sssei",
+    url: "https://github.com/sssei",
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/seiga-ueno-9478692a0",
+    url: "https://www.linkedin.com/in/seiga-ueno-9478692a0/",
+  },
+   {
+     label: "Email",
+     value: "uenoseiga@gmail.com",
+     url: "mailto:uenoseiga@gmail.com",
+  },
+  {
+	label : "X",
+	value: "@_mikan16",
+	url: "https://x.com/_mikan16",
+  }
+];
+
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{name} | {role}</title>
+    <meta
+      name="description"
+      content="Personal profile page of Seiga Ueno, security engineer."
+    />
+  </head>
+  <body>
+    <main class="container">
+
+		<section class="hero">
+		<div class="hero-top">
+			<img src="/profile.png" alt="Profile image of Seiga Ueno" class="avatar" />
+
+			<div class="hero-copy">
+			<h1>{name}</h1>
+			<p class="role">{role}</p>
+			</div>
+		</div>
+
+		<nav class="nav">
+			<a href="#about">About</a>
+			<a href="#experience">Experience</a>
+			<a href="#education">Education</a>
+			<a href="#skills">Skills</a>
+			<a href="#projects">Links</a>
+			<a href="#contact">Contact</a>
+		</nav>
+		</section>	
+
+      <section id="about" class="card">
+        <h2>About</h2>
+        <p>
+		 Security engineer focused on offensive security, with interests in Windows kernel internals, AI/LLM security, and Red Team operations.
+        </p>
+      </section>
+
+      <section id="experience" class="card">
+        <h2>Experience</h2>
+        {experience.map((item) => (
+          <article class="item">
+            <div class="item-head">
+              <h3>{item.title}</h3>
+              <p class="period">{item.period}</p>
+            </div>
+            <p class="org">{item.org}</p>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </section>
+
+	<section id="education" class="card">
+	<h2>Education</h2>
+	{education.map((item) => (
+		<article class="item">
+		<div class="item-head">
+			<h3>{item.school}</h3>
+			<p class="period">{item.period}</p>
+		</div>
+		<p class="org">{item.degree}</p>
+		<p>{item.body}</p>
+		</article>
+	))}
+	
+	</section>
+      <section id="skills" class="card">
+        <h2>Skills</h2>
+        <ul class="tags">
+          {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+      </section>
+
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <ul class="contact-list">
+          {contact.map((item) => (
+            <li>
+              <a href={item.url} target="_blank" rel="noreferrer">
+                {item.label}: {item.value}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg: #f5f7fb;
+    --panel: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --line: #d9dee7;
+    --accent: #2563eb;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+  }
+
+  body {
+    line-height: 1.6;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .container {
+    width: min(860px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 48px 0 72px;
+  }
+
+  .hero {
+    padding: 12px 0 20px;
+  }
+
+  .hero-top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: nowrap;
+  }
+
+  .hero-copy {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .avatar {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 4.6vw, 3.6rem);
+    line-height: 1.02;
+    margin: 0;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+  }
+
+  .role {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin: 10px 0 0;
+    font-weight: 500;
+  }
+
+
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .nav a {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    color: var(--muted);
+    font-weight: 500;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .nav a:hover {
+    background: #fafbfc;
+    border-color: #cbd5e1;
+    color: var(--text);
+  }
+
+  .card {
+    margin-top: 18px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 22px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 8px rgba(15, 23, 42, 0.03);
+  }
+
+    h1 {
+		font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+		line-height: 1.02;
+		margin: 0;
+		letter-spacing: -0.04em;
+		font-weight: 800;
+	}
+
+  h2 {
+    margin: 0 0 18px;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .item + .item {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid #edf1f5;
+  }
+
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .item h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .org {
+    margin: 10px 0 8px;
+    color: var(--muted);
+  }
+
+  .period {
+    margin: 0;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tags li {
+    padding: 9px 13px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #f8fafc;
+    color: #374151;
+    font-size: 0.95rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .project {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px;
+    background: #fff;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .project:hover {
+    border-color: #cbd5e1;
+    background: #fcfcfd;
+  }
+
+  .project h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+  }
+
+  .project p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .contact-list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+  }
+
+  .contact-list li + li {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      width: min(100% - 24px, 860px);
+      padding: 28px 0 48px;
+    }
+
+    .hero-top {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+    }
+
+    h1 {
+		font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+		line-height: 1.02;
+		margin: 0;
+		letter-spacing: -0.04em;
+		font-weight: 800;
+	}
+
+    .role {
+      font-size: 1rem;
+    }
+
+
+    .nav {
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .nav a {
+      padding: 9px 14px;
+    }
+
+    .card {
+      padding: 20px 18px;
+      border-radius: 18px;
+    }
+
+    .item-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .period {
+      white-space: normal;
+    }
+  }
+</style>
