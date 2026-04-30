@@ -41,6 +41,23 @@ const education = [
   },
 ];
 
+const publicationsAndTalks = [
+  {
+    type: "Poster Presentation",
+    title: "Toward Efficient Fuzzing for Container Escape Vulnerability Detection",
+    authors: "Seiga Ueno, Takahiro Shinagawa",
+    venue: "15th ACM SIGOPS Asia-Pacific Workshop on Systems",
+    period: "Sep 2024",
+  },
+  {
+    type: "Talk",
+    title: "LLM-Based Natural Language Steganography for Covert C2 Communications",
+    authors: "Seiga Ueno",
+    venue: "BSides Tokyo",
+    period: "May 16, 2026",
+  },
+];
+
 const contact = [
   {
     label: "GitHub",
@@ -94,6 +111,7 @@ const contact = [
 			<a href="#about">About</a>
 			<a href="#experience">Experience</a>
 			<a href="#education">Education</a>
+      <a href="#publications-talks">Publications & Talks</a>
 			<a href="#skills">Skills</a>
 			<a href="#projects">Links</a>
 			<a href="#contact">Contact</a>
@@ -134,6 +152,20 @@ const contact = [
 		</article>
 	))}
 	
+<section id="publications-talks" class="card">
+  <h2>Publications & Talks</h2>
+  {publicationsAndTalks.map((item) => (
+    <article class="item">
+      <div class="item-head">
+        <h3>{item.title}</h3>
+        <p class="period">{item.period}</p>
+      </div>
+      <p class="org">{item.type} · {item.venue}</p>
+      <p>{item.authors}</p>
+    </article>
+  ))}
+</section>
+  
 	</section>
       <section id="skills" class="card">
         <h2>Skills</h2>
