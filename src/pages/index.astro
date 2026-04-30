@@ -43,16 +43,12 @@ const education = [
 
 const publicationsAndTalks = [
   {
-    type: "Poster Presentation",
     title: "Toward Efficient Fuzzing for Container Escape Vulnerability Detection",
-    authors: "Seiga Ueno, Takahiro Shinagawa",
     venue: "15th ACM SIGOPS Asia-Pacific Workshop on Systems",
     period: "Sep 2024",
   },
   {
-    type: "Talk",
     title: "LLM-Based Natural Language Steganography for Covert C2 Communications",
-    authors: "Seiga Ueno",
     venue: "BSides Tokyo",
     period: "May 16, 2026",
   },
@@ -139,19 +135,20 @@ const contact = [
         ))}
       </section>
 
-	<section id="education" class="card">
-	<h2>Education</h2>
-	{education.map((item) => (
-		<article class="item">
-		<div class="item-head">
-			<h3>{item.school}</h3>
-			<p class="period">{item.period}</p>
-		</div>
-		<p class="org">{item.degree}</p>
-		<p>{item.body}</p>
-		</article>
-	))}
-	
+<section id="education" class="card">
+  <h2>Education</h2>
+  {education.map((item) => (
+    <article class="item">
+      <div class="item-head">
+        <h3>{item.school}</h3>
+        <p class="period">{item.period}</p>
+      </div>
+      <p class="org">{item.degree}</p>
+      <p>{item.body}</p>
+    </article>
+  ))}
+</section>
+
 <section id="publications-talks" class="card">
   <h2>Publications & Talks</h2>
   {publicationsAndTalks.map((item) => (
@@ -160,13 +157,11 @@ const contact = [
         <h3>{item.title}</h3>
         <p class="period">{item.period}</p>
       </div>
-      <p class="org">{item.type} · {item.venue}</p>
-      <p>{item.authors}</p>
+      <p class="org">{item.venue}</p>
     </article>
   ))}
 </section>
-  
-	</section>
+
       <section id="skills" class="card">
         <h2>Skills</h2>
         <ul class="tags">
